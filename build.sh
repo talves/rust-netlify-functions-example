@@ -3,4 +3,4 @@
 set -euxo pipefail
 
 cargo build --release
-cp target/release/hello netlify/functions/hello/
+cp target/release/hello netlify/functions/hello
