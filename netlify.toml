@@ -1,6 +1,7 @@
 [build]
-command = "echo 'use build.sh script to build'"
+command = "./build.sh"
 publish = "public"
+functions = "target/lambda"
 
-# [context.production]
-# environment = { NETLIFY_EXPERIMENTAL_BUILD_RUST_SOURCE = "true" }
+[context.production]
+environment = { NETLIFY_USE_YARN = "true" }

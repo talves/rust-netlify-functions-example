@@ -1,4 +1,5 @@
 /target
+netlify/functions
 .netlify
 node_modules
 yarn.lock
