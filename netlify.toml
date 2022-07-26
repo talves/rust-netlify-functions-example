@@ -1,0 +1,6 @@
+[build]
+command = "echo 'use build.sh script to build'"
+publish = "public"
+
+# [context.production]
+# environment = { NETLIFY_EXPERIMENTAL_BUILD_RUST_SOURCE = "true" }
