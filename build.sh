@@ -5,7 +5,8 @@ set -euxo pipefail
 yarn global add @ziglang/cli
 whereis zig
 cargo install cargo-lambda
-# mkdir -p netlify/functions
+mkdir -p netlify/functions
 # cargo build --release
 cargo lambda build --release
-# cp target/lambda netlify/functions
+# add copy commands as you add functions
+cp target/lambda/hello/bootstrap netlify/functions/hello
