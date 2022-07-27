@@ -12,7 +12,7 @@ set -euxo pipefail
 # cp target/x86_64-unknown-linux-gnu/release/dad-joke netlify/functions/
 
 mkdir -p netlify/functions
-cargo build --release
+cargo build --target x86_64-unknown-linux-musl --release
 # add copy commands as you add functions
 cp target/release/hello netlify/functions/
 cp target/release/dad-joke netlify/functions/
