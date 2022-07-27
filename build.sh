@@ -10,9 +10,3 @@ cargo zigbuild --target x86_64-unknown-linux-gnu.2.26 --release
 # add copy commands as you add functions
 cp target/x86_64-unknown-linux-gnu/release/hello netlify/functions/
 cp target/x86_64-unknown-linux-gnu/release/dad-joke netlify/functions/
-
-# mkdir -p netlify/functions
-# cargo build --target x86_64-unknown-linux-gnu.2.26 --release
-# # add copy commands as you add functions
-# cp target/x86_64-unknown-linux-musl/release/hello netlify/functions/
-# cp target/x86_64-unknown-linux-musl/release/dad-joke netlify/functions/
