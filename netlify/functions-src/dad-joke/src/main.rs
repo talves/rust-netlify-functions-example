@@ -25,14 +25,6 @@ async fn handler(
 
     let api = Client::new();
 
-    // let api_resp: ApiResponse = api
-    //     .get("https://icanhazdadjoke.com/")
-    //     .header("Accept", "application/json")
-    //     .send()
-    //     .await?
-    //     .json()
-    //     .await?;
-
     let url = match _event.query_string_parameters.first("url") {
         Some(value) => value,
         _ => "https://icanhazdadjoke.com/",
@@ -54,6 +46,14 @@ async fn handler(
             joke: e.to_string(),
         },
     };
+
+    // let api_resp: ApiResponse = api
+    //     .get("https://icanhazdadjoke.com/")
+    //     .header("Accept", "application/json")
+    //     .send()
+    //     .await?
+    //     .json()
+    //     .await?;
 
     let resp = ApiGatewayProxyResponse {
         status_code: 200,
