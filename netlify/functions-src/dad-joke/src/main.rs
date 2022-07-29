@@ -25,13 +25,35 @@ async fn handler(
 
     let api = Client::new();
 
-    let api_resp: ApiResponse = api
-        .get("https://icanhazdadjoke.com/")
+    let url = match _event.query_string_parameters.first("url") {
+        Some(value) => value,
+        _ => "https://icanhazdadjoke.com/",
+    };
+
+    let api_resp: ApiResponse = match api
+        .get(url)
         .header("Accept", "application/json")
         .send()
-        .await?
-        .json()
-        .await?;
+        .await
+    {
+        Ok(resp) => match resp.json::<ApiResponse>().await {
+            Ok(resp) => resp,
+            Err(e) => return Err(Box::new(e)),
+        },
+        // Err(e) => return Err(Box::new(e)),
+        Err(e) => ApiResponse {
+            id: String::from("-1"),
+            joke: e.to_string(),
+        },
+    };
+
+    // let api_resp: ApiResponse = api
+    //     .get("https://icanhazdadjoke.com/")
+    //     .header("Accept", "application/json")
+    //     .send()
+    //     .await?
+    //     .json()
+    //     .await?;
 
     let resp = ApiGatewayProxyResponse {
         status_code: 200,
